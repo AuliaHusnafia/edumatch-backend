@@ -1,0 +1,1283 @@
+openapi: 3.0.3
+info:
+  title: EduMatch API
+  version: 1.0.0
+  description: API documentation for EduMatch - Platform Mentoring Digital
+paths:
+  /api/admin/all-mentees/:
+    get:
+      operationId: admin_all_mentees_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_all_mentees_create
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: admin_all_mentees_update
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: admin_all_mentees_destroy
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/all-mentors/:
+    get:
+      operationId: admin_all_mentors_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_all_mentors_create
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: admin_all_mentors_update
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: admin_all_mentors_destroy
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/bookings/:
+    get:
+      operationId: admin_bookings_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/admin/mentees/:
+    get:
+      operationId: admin_mentees_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_mentees_create
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: admin_mentees_update
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: admin_mentees_destroy
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/mentees/{user_id}/:
+    get:
+      operationId: admin_mentees_retrieve_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_mentees_create_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: admin_mentees_update_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: admin_mentees_destroy_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/mentors/:
+    get:
+      operationId: admin_mentors_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_mentors_create
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: admin_mentors_update
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: admin_mentors_destroy
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/mentors/{user_id}/:
+    get:
+      operationId: admin_mentors_retrieve_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_mentors_create_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    put:
+      operationId: admin_mentors_update_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    delete:
+      operationId: admin_mentors_destroy_2
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/admin/payments/:
+    get:
+      operationId: admin_payments_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/admin/pending-mentors/:
+    get:
+      operationId: admin_pending_mentors_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_pending_mentors_create
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/admin/stats/:
+    get:
+      operationId: admin_stats_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/admin/transactions/:
+    get:
+      operationId: admin_transactions_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/admin/withdraw-requests/:
+    get:
+      operationId: admin_withdraw_requests_retrieve
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: admin_withdraw_requests_create
+      tags:
+      - admin
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/auth/login/:
+    post:
+      operationId: auth_login_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/auth/me/:
+    get:
+      operationId: auth_me_retrieve
+      tags:
+      - auth
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/auth/refresh/:
+    post:
+      operationId: auth_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/auth/register/:
+    post:
+      operationId: auth_register_create
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Register'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+  /api/mentee/book/:
+    post:
+      operationId: mentee_book_create
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentee/bookings/:
+    get:
+      operationId: mentee_bookings_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMenteeBookingList'
+          description: ''
+  /api/mentee/completed-sessions/:
+    get:
+      operationId: mentee_completed_sessions_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMenteeBookingList'
+          description: ''
+  /api/mentee/mentors/:
+    get:
+      operationId: mentee_mentors_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: university
+        schema:
+          type: string
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMentorListList'
+          description: ''
+  /api/mentee/mentors/{mentor_id}/:
+    get:
+      operationId: mentee_mentors_retrieve
+      parameters:
+      - in: path
+        name: mentor_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorList'
+          description: ''
+  /api/mentee/ongoing-sessions/:
+    get:
+      operationId: mentee_ongoing_sessions_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMenteeBookingList'
+          description: ''
+  /api/mentee/pay/{booking_id}/:
+    post:
+      operationId: mentee_pay_create
+      parameters:
+      - in: path
+        name: booking_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - mentee
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/active-sessions/:
+    get:
+      operationId: mentor_active_sessions_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMentorBookingList'
+          description: ''
+  /api/mentor/available-slots/:
+    get:
+      operationId: mentor_available_slots_retrieve
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: mentor_available_slots_create
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/available-slots/{slot_id}/:
+    delete:
+      operationId: mentor_available_slots_destroy
+      parameters:
+      - in: path
+        name: slot_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/mentor/booking-requests/:
+    get:
+      operationId: mentor_booking_requests_list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMentorBookingList'
+          description: ''
+  /api/mentor/complete-session/:
+    post:
+      operationId: mentor_complete_session_create
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/income/:
+    get:
+      operationId: mentor_income_retrieve
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/profile/:
+    get:
+      operationId: mentor_profile_retrieve
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorProfile'
+          description: ''
+    put:
+      operationId: mentor_profile_update
+      tags:
+      - mentor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MentorProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MentorProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MentorProfile'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorProfile'
+          description: ''
+    patch:
+      operationId: mentor_profile_partial_update
+      tags:
+      - mentor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMentorProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMentorProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMentorProfile'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MentorProfile'
+          description: ''
+  /api/mentor/respond-booking/:
+    post:
+      operationId: mentor_respond_booking_create
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/reviews/:
+    get:
+      operationId: mentor_reviews_retrieve
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/start-session/:
+    post:
+      operationId: mentor_start_session_create
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/mentor/withdraw/:
+    post:
+      operationId: mentor_withdraw_create
+      tags:
+      - mentor
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/payments/earnings/:
+    get:
+      operationId: payments_earnings_retrieve
+      description: Pendapatan mentor — hanya dari payment success
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/payments/pay/:
+    post:
+      operationId: payments_pay_create
+      description: 'Mentee membuat tagihan — FIX: hapus pending lama, buat order_id
+        baru'
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/payments/simulate-success/:
+    post:
+      operationId: payments_simulate_success_create
+      description: DEV ONLY
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/payments/status/{booking_id}/:
+    get:
+      operationId: payments_status_retrieve
+      description: Cek status payment untuk booking tertentu
+      parameters:
+      - in: path
+        name: booking_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/payments/webhook/:
+    post:
+      operationId: payments_webhook_create
+      description: |-
+        Webhook dari Midtrans.
+        Untuk development gunakan ngrok:
+          ngrok http 8000
+        Set di Midtrans sandbox dashboard:
+          https://xxxx.ngrok.io/api/payments/webhook/
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/payments/withdraw/:
+    post:
+      operationId: payments_withdraw_create
+      description: Mentor ajukan pencairan saldo
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/payments/withdraw/history/:
+    get:
+      operationId: payments_withdraw_history_retrieve
+      description: Riwayat pencairan mentor
+      tags:
+      - payments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    MenteeBooking:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        mentor_name:
+          type: string
+          maxLength: 100
+        date:
+          type: string
+          format: date-time
+        notes:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        status_display:
+          type: string
+          readOnly: true
+        meeting_link:
+          type: string
+          format: uri
+          nullable: true
+          maxLength: 200
+        invoice_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        payment_status:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - date
+      - id
+      - mentor_name
+      - payment_status
+      - status_display
+    MentorBooking:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        mentee_name:
+          type: string
+          maxLength: 100
+        date:
+          type: string
+          format: date-time
+        notes:
+          type: string
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        meeting_link:
+          type: string
+          format: uri
+          nullable: true
+          maxLength: 200
+        invoice_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - date
+      - id
+      - mentee_name
+    MentorList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          title: Nama pengguna
+          description: Wajib. 150 karakter atau sedikit. Hanya huruf, angka, dan @/./+/-/_.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Alamat email
+          maxLength: 254
+        university:
+          type: string
+          maxLength: 200
+        skills:
+          type: string
+          readOnly: true
+        price_per_session:
+          type: integer
+          readOnly: true
+        bio:
+          type: string
+          readOnly: true
+        education:
+          type: string
+          readOnly: true
+        available_slots:
+          readOnly: true
+      required:
+      - available_slots
+      - bio
+      - education
+      - id
+      - price_per_session
+      - skills
+      - username
+    MentorProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        university:
+          type: string
+          readOnly: true
+        skills:
+          type: string
+        price_per_session:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        bio:
+          type: string
+        education:
+          type: string
+          maxLength: 255
+        available_slots: {}
+      required:
+      - email
+      - id
+      - university
+      - username
+    PaginatedMenteeBookingList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MenteeBooking'
+    PaginatedMentorBookingList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MentorBooking'
+    PaginatedMentorListList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MentorList'
+    PatchedMentorProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        university:
+          type: string
+          readOnly: true
+        skills:
+          type: string
+        price_per_session:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        bio:
+          type: string
+        education:
+          type: string
+          maxLength: 255
+        available_slots: {}
+    Register:
+      type: object
+      properties:
+        username:
+          type: string
+          title: Nama pengguna
+          description: Wajib. 150 karakter atau sedikit. Hanya huruf, angka, dan @/./+/-/_.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Alamat email
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        university:
+          type: string
+          maxLength: 200
+        phone:
+          type: string
+          maxLength: 15
+      required:
+      - password
+      - username
+    RoleEnum:
+      enum:
+      - mentee
+      - mentor
+      - admin
+      type: string
+      description: |-
+        * `mentee` - Mentee
+        * `mentor` - Mentor
+        * `admin` - Admin
+    StatusEnum:
+      enum:
+      - pending_payment
+      - pending
+      - accepted
+      - rejected
+      - ongoing
+      - completed
+      - cancelled
+      - paid
+      type: string
+      description: |-
+        * `pending_payment` - Menunggu Pembayaran
+        * `pending` - Menunggu
+        * `accepted` - Diterima
+        * `rejected` - Ditolak
+        * `ongoing` - Berlangsung
+        * `completed` - Selesai
+        * `cancelled` - Dibatalkan
+        * `paid` - Lunas
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

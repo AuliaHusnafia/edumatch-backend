@@ -1,0 +1,16 @@
+Django>=4.2.0
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+requirements_additions.txt
+midtransclient
+django-filter
+drf-spectacular
+psycopg2-binary
+PyYAML
+gunicorn
+whitenoise
+dj-database-url
+psycopg2-binary
+python-decouple
+ 
