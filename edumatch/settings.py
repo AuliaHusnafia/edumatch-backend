@@ -1,10 +1,14 @@
+import os
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-test-key-12345'
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-test-key-12345')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,6 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # untuk static files di production
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,13 +62,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'edumatch.wsgi.application'
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# ─── DATABASE ────────────────────────────────────────────────────────────────
+# Railway otomatis set DATABASE_URL; di lokal fallback ke SQLite
+DATABASE_URL = config('DATABASE_URL', default=None)
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -76,20 +89,28 @@ LANGUAGE_CODE = 'id-id'
 TIME_ZONE = 'Asia/Jakarta'
 USE_I18N = True
 USE_TZ = True
-STATIC_URL = 'static/'
+
+# ─── STATIC FILES ─────────────────────────────────────────────────────────────
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# MIDTRANS Configuration (Sandbox keys for testing)
-MIDTRANS_SERVER_KEY = 'Mid-server-8pdSfzqSdsTj4AqshTdL1HhN'
-MIDTRANS_CLIENT_KEY = 'Mid-client-6Y_-y0gUnfy9jSl-'
-MIDTRANS_IS_PRODUCTION = False
+# ─── MIDTRANS ─────────────────────────────────────────────────────────────────
+MIDTRANS_SERVER_KEY = config('MIDTRANS_SERVER_KEY', default='Mid-server-8pdSfzqSdsTj4AqshTdL1HhN')
+MIDTRANS_CLIENT_KEY = config('MIDTRANS_CLIENT_KEY', default='Mid-client-6Y_-y0gUnfy9jSl-')
+MIDTRANS_IS_PRODUCTION = config('MIDTRANS_IS_PRODUCTION', default=False, cast=bool)
 
-# Custom User Model
+# ─── CUSTOM USER MODEL ────────────────────────────────────────────────────────
 AUTH_USER_MODEL = 'users.User'
 
-# CORS
-CORS_ALLOW_ALL_ORIGINS = True
+# ─── CORS ─────────────────────────────────────────────────────────────────────
+# Di production, ganti '*' dengan domain frontend yang sebenarnya
+CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=True, cast=bool)
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='').split(',') if config('CORS_ALLOWED_ORIGINS', default='') else []
 
+# ─── DRF + JWT + SPECTACULAR ──────────────────────────────────────────────────
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -103,11 +124,11 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
+        'rest_framework.throttling.UserRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/day',
-        'user': '1000/day'
+        'user': '1000/day',
     },
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'COERCE_DECIMAL_TO_STRING': False,
