@@ -181,6 +181,18 @@ class AllMentorsView(generics.ListAPIView):
 @extend_schema(
     tags=['admin'],
     summary='Update atau hapus mentor berdasarkan ID',
+    request={
+        'application/json': {
+            'type': 'object',
+            'properties': {
+                'username':   {'type': 'string'},
+                'email':      {'type': 'string'},
+                'password':   {'type': 'string'},
+                'university': {'type': 'string'},
+                'phone':      {'type': 'string'},
+            },
+        }
+    },
     parameters=[
         OpenApiParameter(name='user_id', type=int, location=OpenApiParameter.PATH, description='ID mentor'),
     ],
@@ -269,14 +281,26 @@ class AllMenteesView(generics.ListAPIView):
         )
         return Response({'message': 'Mentee berhasil ditambahkan', 'id': user.id}, status=201)
 
-
 @extend_schema(
     tags=['admin'],
     summary='Update atau hapus mentee berdasarkan ID',
+    request={
+        'application/json': {
+            'type': 'object',
+            'properties': {
+                'username':   {'type': 'string'},
+                'email':      {'type': 'string'},
+                'password':   {'type': 'string'},
+                'university': {'type': 'string'},
+                'phone':      {'type': 'string'},
+            },
+        }
+    },
     parameters=[
         OpenApiParameter(name='user_id', type=int, location=OpenApiParameter.PATH, description='ID mentee'),
     ],
 )
+
 class MenteeDetailView(APIView):
     permission_classes = [IsAdmin]
 
