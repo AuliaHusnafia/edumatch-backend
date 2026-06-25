@@ -281,48 +281,25 @@ class WithdrawalHistoryView(generics.ListAPIView):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def simulate_payment_success(request):
-    """DEV ONLY — sinkronkan status setelah Snap popup sukses di localhost (webhook tidak bisa diakses Midtrans)"""
-    if not settings.DEBUG:
-        return Response({'error': 'Hanya di mode DEBUG'}, status=403)
-
+    """Simulasi webhook Midtrans untuk environment tanpa webhook publik"""
     booking_id = request.data.get('booking_id')
-    if not booking_id:
-        return Response({'error': 'booking_id wajib diisi'}, status=400)
-
     try:
         booking = Booking.objects.get(id=booking_id, mentee=request.user)
-    except Booking.DoesNotExist:
-        return Response({'error': 'Booking tidak ditemukan'}, status=404)
-
-    if booking.status == 'paid':
-        return Response({'message': 'Booking ini sudah lunas', 'booking_id': booking_id})
-
-    # Ambil payment yang PALING BARU untuk booking ini (biasanya status pending dari create_payment)
-    payment = Payment.objects.filter(booking=booking).order_by('-id').first()
-
-    if payment:
-        # Update payment yang sudah ada — jangan create baru, hindari order_id bentrok
+        Payment.objects.filter(booking=booking, status='pending').delete()
+        payment, _ = Payment.objects.get_or_create(
+            booking=booking,
+            defaults={
+                'order_id': f"SIM-{booking.id}",
+                'amount': int(booking.invoice_amount),
+                'platform_fee': int(booking.invoice_amount * 0.10),
+                'mentor_revenue': int(booking.invoice_amount * 0.90),
+            }
+        )
         payment.status = 'success'
-        payment.paid_at = timezone.now()
-        if not payment.platform_fee: 
-            payment.platform_fee = int(booking.invoice_amount * Decimal('0.10'))
-        if not payment.mentor_revenue:
-            payment.mentor_revenue = int(booking.invoice_amount * Decimal('0.90'))
+        payment.paid_at = __import__('django.utils.timezone', fromlist=['timezone']).timezone.now()
         payment.save()
-    else:
-        # Tidak ada payment record sama sekali — buat baru dengan order_id unik
-        import uuid as uuid_lib
-        payment = Payment.objects.create(
-        booking=booking,
-        order_id=f"SIM-{booking.id}-{uuid_lib.uuid4().hex[:6].upper()}",
-        amount=int(booking.invoice_amount),
-        platform_fee=int(booking.invoice_amount * Decimal('0.10')),
-        mentor_revenue=int(booking.invoice_amount * Decimal('0.90')),
-        status='success',
-        paid_at=timezone.now(),
-    )
-
-    booking.status = 'paid'
-    booking.save()
-
-    return Response({'message': 'Simulasi pembayaran berhasil', 'booking_id': booking_id})
+        booking.status = 'paid'
+        booking.save()
+        return Response({'message': 'Simulasi berhasil', 'booking_id': booking_id})
+    except (Booking.DoesNotExist, Exception) as e:
+        return Response({'error': str(e)}, status=404)
