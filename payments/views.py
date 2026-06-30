@@ -289,21 +289,31 @@ def simulate_payment_success(request):
     booking_id = request.data.get('booking_id')
     try:
         booking = Booking.objects.get(id=booking_id, mentee=request.user)
-        Payment.objects.filter(booking=booking, status='pending').delete()
-        payment, _ = Payment.objects.get_or_create(
-            booking=booking,
-            defaults={
-                'order_id': f"SIM-{booking.id}",
-                'amount': int(booking.invoice_amount),
-                'platform_fee': int(booking.invoice_amount * Decimal('0.10')),
-                'mentor_revenue': int(booking.invoice_amount * Decimal('0.90')),
-            }
-        )
+        try:
+            payment = Payment.objects.get(booking=booking)
+        except Payment.DoesNotExist:
+            payment = Payment.objects.create(
+                booking=booking,
+                order_id=f"SIM-{booking.id}",
+                amount=booking.invoice_amount,
+                platform_fee=int(booking.invoice_amount * Decimal('0.10')),
+                mentor_revenue=int(booking.invoice_amount * Decimal('0.90')),
+            )
+        
         payment.status = 'success'
         payment.paid_at = timezone.now()
         payment.save()
         booking.status = 'paid'
         booking.save()
+        
+        try:
+            from sessions.models import MentoringSession
+            session = MentoringSession.objects.get(booking=booking)
+            session.status = 'completed'
+            session.save()
+        except Exception:
+            pass
+            
         return Response({'message': 'Simulasi berhasil', 'booking_id': booking_id})
     except (Booking.DoesNotExist, Exception) as e:
         return Response({'error': str(e)}, status=404)
