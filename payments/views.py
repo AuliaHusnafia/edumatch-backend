@@ -278,10 +278,14 @@ class WithdrawalHistoryView(generics.ListAPIView):
             return WithdrawalRequest.objects.none()
         return WithdrawalRequest.objects.filter(mentor=self.request.user).order_by('-created_at')
 
+# SESUDAH
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def simulate_payment_success(request):
-    """Simulasi webhook Midtrans untuk environment tanpa webhook publik"""
+    """Simulasi webhook Midtrans untuk environment tanpa webhook publik — hanya aktif saat DEBUG=True"""
+    if not settings.DEBUG:
+        return Response({'error': 'Endpoint ini hanya tersedia di mode DEBUG'}, status=403)
+
     booking_id = request.data.get('booking_id')
     try:
         booking = Booking.objects.get(id=booking_id, mentee=request.user)
@@ -291,12 +295,12 @@ def simulate_payment_success(request):
             defaults={
                 'order_id': f"SIM-{booking.id}",
                 'amount': int(booking.invoice_amount),
-                'platform_fee': int(booking.invoice_amount * 0.10),
-                'mentor_revenue': int(booking.invoice_amount * 0.90),
+                'platform_fee': int(booking.invoice_amount * Decimal('0.10')),
+                'mentor_revenue': int(booking.invoice_amount * Decimal('0.90')),
             }
         )
         payment.status = 'success'
-        payment.paid_at = __import__('django.utils.timezone', fromlist=['timezone']).timezone.now()
+        payment.paid_at = timezone.now()
         payment.save()
         booking.status = 'paid'
         booking.save()

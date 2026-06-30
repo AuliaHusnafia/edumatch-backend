@@ -177,16 +177,7 @@ class PaymentTests(APITestCase):
         self.assertEqual(response.data['available_balance'], 50000)
 
     def test_simulate_payment_success_updates_booking_status(self):
-        """
-        Endpoint simulate-success harus mengubah status booking jadi paid.
-        Catatan: Django menjalankan test dengan DEBUG=False secara default,
-        sedangkan endpoint ini sengaja diblokir di luar mode DEBUG (untuk
-        mencegah penyalahgunaan di production). Test ini di-override
-        settings.DEBUG=True khusus selama pengujian agar logic intinya tetap
-        bisa diverifikasi.
-        """
-        from django.test import override_settings
-
+        """Endpoint simulate-success harus mengubah status booking jadi paid."""
         self._login_as('mentee_test')
         url = reverse('simulate-success')
         data = {'booking_id': self.booking.id}
