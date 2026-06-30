@@ -282,9 +282,7 @@ class WithdrawalHistoryView(generics.ListAPIView):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def simulate_payment_success(request):
-    """Simulasi webhook Midtrans untuk environment tanpa webhook publik — hanya aktif saat DEBUG=True"""
-    if not settings.DEBUG:
-        return Response({'error': 'Endpoint ini hanya tersedia di mode DEBUG'}, status=403)
+    """Simulasi webhook Midtrans untuk environment tanpa webhook publik"""
 
     booking_id = request.data.get('booking_id')
     try:
